@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace Chapter15Excersices
@@ -7,6 +8,116 @@ namespace Chapter15Excersices
     {
         static void Main(string[] args)
         {
+            Excersice7();
+
+            //Excersice6();
+
+            // Trash();
+        }
+
+        private static void Excersice7()
+        {
+            try
+            {
+                StreamReader reader = new StreamReader("SwapStart.txt");
+                StreamWriter writer = new StreamWriter("FinishText.txt");
+                using (reader)
+                {
+                    using (writer)
+                    {
+                        string line = reader.ReadLine();
+                        string newLine = "";
+                        bool move = true;
+                        while (line != null)
+                        {
+                            move = true;
+                            if (line.Contains("start"))
+                            {
+                                int index = line.IndexOf("start");
+                                if (line.Length == index + 5)
+                                {
+                                    newLine = line.Replace("start", "finish");
+                                    writer.WriteLine(newLine);
+                                    move = false;
+                                    line = reader.ReadLine();
+                                }
+                                if (move)
+                                {
+                                    if (line[index + 5] == ' ')
+                                    {
+                                        newLine = line.Replace("start", "finish");
+                                        writer.WriteLine(newLine);
+                                        line = reader.ReadLine();
+                                    }
+                                    else
+                                    {
+                                        writer.WriteLine(line);
+                                        line = reader.ReadLine();
+                                    }
+                                }
+                                else if (move == true)
+                                {
+                                    writer.WriteLine(line);
+                                    line = reader.ReadLine();
+                                }
+                            }
+                            else
+                            {
+                                writer.WriteLine(line);
+                                line = reader.ReadLine();
+                            }
+                        }
+
+
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        private static void Excersice6()
+        {
+            try
+            {
+                StreamReader reader = new StreamReader("listNames.txt");
+                int number = 1;
+                List<string> listOfNames = new List<string>();
+                using (reader)
+                {
+                    string line = reader.ReadLine();
+                    while (line != null)
+                    {
+                        listOfNames.Add(line);
+                        line = reader.ReadLine();
+                        number++;
+                    }
+                }
+                string[] names = new string[number];
+                listOfNames.Sort();
+                for (int i = 0; i < listOfNames.Count; i++)
+                {
+                    names[i] = listOfNames[i];
+                }
+                foreach (string name in names)
+                {
+                    Console.WriteLine(name);
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        private static void Trash()
+        {
+            // Excersices 5
             try
             {
                 StreamReader reader1 = new StreamReader("text.txt");
@@ -14,6 +125,8 @@ namespace Chapter15Excersices
                 int[,] matrix = new int[matrixLenght, matrixLenght];
                 string line = "";
                 string[] numbers = new string[matrixLenght];
+                using (reader1)
+                {
                     for (int i = 0; i < matrixLenght; i++)
                     {
                         line = reader1.ReadLine();
@@ -23,6 +136,8 @@ namespace Chapter15Excersices
                             matrix[i, j] = int.Parse(numbers[j]);
                         }
                     }
+                }
+
                 // Methods
                 PringMatrix(matrix);
                 Console.WriteLine("");
