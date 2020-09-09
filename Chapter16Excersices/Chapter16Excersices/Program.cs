@@ -7,7 +7,9 @@ namespace Chapter16Excersices
     {
         static void Main(string[] args)
         {
-            Excersice5();
+            //Excersice6();
+
+            //Excersice5();
 
             //Excersice4();
 
@@ -16,6 +18,34 @@ namespace Chapter16Excersices
             //Excersice2();
 
             //Excersice1();
+        }
+
+        private static void Excersice6()
+        {
+            int[] numArr = new int[] { 4, 2, 2, 5, 2, 3, 2, 3, 1, 5, 2 };
+            List<int> editedList = new List<int>(numArr);
+            int counter = 0;
+            int uniqueNum = 0;
+            for (int i = 0; i < numArr.Length; i++)
+            {
+                for (int j = 0; j < numArr.Length; j++)
+                {
+                    if (numArr[i] == numArr[j])
+                    {
+                        uniqueNum = numArr[i];
+                        counter++;
+                    }
+                }
+                if (counter % 2 != 0)
+                {
+                    editedList.Remove(uniqueNum);
+                }
+                counter = 0;
+            }
+            foreach (int number in editedList)
+            {
+                Console.WriteLine(number);
+            }
         }
 
         private static void Excersice5()
