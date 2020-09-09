@@ -8,7 +8,10 @@ namespace Chapter15Excersices
     {
         static void Main(string[] args)
         {
-            Excersice7();
+
+
+
+            //Excersice7();
 
             //Excersice6();
 
