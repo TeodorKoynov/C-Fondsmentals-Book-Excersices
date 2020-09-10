@@ -7,6 +7,34 @@ namespace Chapter16Excersices
     {
         static void Main(string[] args)
         {
+            DoubleLinedList<int> numbers = new DoubleLinedList<int>();
+            numbers.Add(14);
+            numbers.Add(51);
+            numbers.Add(15);
+            numbers.Add(156);
+            Console.WriteLine(numbers);
+
+            //Excersice10();
+            
+            //Excersice9();
+
+            //Excersice7();
+
+            //Excersice6();
+
+            //Excersice5();
+
+            //Excersice4();
+
+            //Excersice3();
+
+            //Excersice2();
+
+            //Excersice1();
+        }
+
+        private static void Excersice10()
+        {
             int n = 3;
             int m = 11;
             Queue<int> numbers = new Queue<int>();
@@ -21,12 +49,12 @@ namespace Chapter16Excersices
                     {
                         cantGoLowwer = true;
                     }
-                    if (m % 2 == 0 && m/2 >= n)
+                    if (m % 2 == 0 && m / 2 >= n)
                     {
                         m = m / 2;
                         Console.WriteLine(m);
                     }
-                    else if(n < m && m % 2 != 0 && !cantGoLowwer)
+                    else if (n < m && m % 2 != 0 && !cantGoLowwer)
                     {
                         m = m - 1;
                         Console.WriteLine(m);
@@ -48,26 +76,10 @@ namespace Chapter16Excersices
                     break;
                 }
             }
-            //Excersice9();
-
-            //Excersice7();
-
-            //Excersice6();
-
-            //Excersice5();
-
-            //Excersice4();
-
-            //Excersice3();
-
-            //Excersice2();
-
-            //Excersice1();
         }
 
-        
-        
-        private static void Excersice8()
+
+        private static void Excersice9()
         {
             Queue<int> numbers = new Queue<int>();
             int n = 2;
