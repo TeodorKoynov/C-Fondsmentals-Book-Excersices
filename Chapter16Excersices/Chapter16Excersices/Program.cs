@@ -7,6 +7,51 @@ namespace Chapter16Excersices
     {
         static void Main(string[] args)
         {
+            int n = 3;
+            int m = 11;
+            Queue<int> numbers = new Queue<int>();
+            numbers.Enqueue(m);
+            bool cantGoLowwer = false;
+            Console.WriteLine(m);
+            while (n <= m)
+            {
+                if (n != m)
+                {
+                    if (m / 2 < n)
+                    {
+                        cantGoLowwer = true;
+                    }
+                    if (m % 2 == 0 && m/2 >= n)
+                    {
+                        m = m / 2;
+                        Console.WriteLine(m);
+                    }
+                    else if(n < m && m % 2 != 0 && !cantGoLowwer)
+                    {
+                        m = m - 1;
+                        Console.WriteLine(m);
+                    }
+                    if (m - 2 >= n && cantGoLowwer)
+                    {
+                        m = m - 2;
+                        Console.WriteLine(m);
+                    }
+                    else if (cantGoLowwer)
+                    {
+                        m = m - 1;
+                        Console.WriteLine(m);
+                    }
+                }
+                else if (n == m)
+                {
+                    Console.WriteLine("Ready");
+                    break;
+                }
+            }
+            //Excersice9();
+
+            //Excersice7();
+
             //Excersice6();
 
             //Excersice5();
@@ -18,6 +63,81 @@ namespace Chapter16Excersices
             //Excersice2();
 
             //Excersice1();
+        }
+
+        
+        
+        private static void Excersice8()
+        {
+            Queue<int> numbers = new Queue<int>();
+            int n = 2;
+            numbers.Enqueue(n);
+            Console.WriteLine(n);
+            bool change = false;
+            int baseNum = 1;
+            while (numbers.Count <= 50)
+            {
+                numbers.Enqueue(n + 1);
+                Console.WriteLine(n + 1);
+                numbers.Enqueue(2 * n + 1);
+                Console.WriteLine(2 * n + 1);
+                numbers.Enqueue(n + 2);
+                Console.WriteLine(n + 2);
+                if (!change)
+                {
+                    n = n + 1;
+                    change = true;
+                    baseNum = 2;
+                }
+                else if (baseNum == 2)
+                {
+                    n = (n - 1) * 2 + 1;
+                    baseNum = 3;
+                }
+                else if (baseNum == 3)
+                {
+                    n = (n - 1) / 2 + 2;
+                    baseNum = 1;
+                    change = false;
+                }
+            }
+        }
+
+        private static void Excersice7()
+        {
+            int[] numArr = new int[] { 3, 4, 4, 2, 3, 3, 4, 3, 2 };
+            List<int> numInOrder = new List<int>(numArr);
+            numInOrder.Sort();
+            List<int> foundNums = new List<int>();
+
+            for (int i = 0; i < numInOrder.Count; i++)
+            {
+                int uniqueNum = numInOrder[i];
+                if (!foundNums.Contains(uniqueNum))
+                {
+                    foundNums.Add(uniqueNum);
+                }
+                else
+                {
+                    continue;
+                }
+                int count = 0;
+                int maxCount = 0;
+
+                for (int j = 0; j < numInOrder.Count; j++)
+                {
+                    if (numInOrder[i] == numInOrder[j])
+                    {
+                        count++;
+                        if (count > maxCount)
+                        {
+                            maxCount = count;
+                        }
+                    }
+                }
+                Console.WriteLine($"{uniqueNum} is fount {maxCount} times");
+
+            }
         }
 
         private static void Excersice6()
