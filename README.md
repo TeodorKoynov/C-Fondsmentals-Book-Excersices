@@ -1,2 +1,2 @@
-# C-Fondsmentals-Book-Excersices
+# C-Sharp-Fondsmentals-Book-Excersices
 This is repository for my excersices
