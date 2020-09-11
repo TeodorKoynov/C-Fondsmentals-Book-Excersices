@@ -90,6 +90,146 @@ namespace Chapter16Excersices
             }
             count++;
         }
+        public void Remove(T element)
+        {
+            if (head.Value.Equals(element)) // If element is head
+            {
+                head = head.NextNode;
+                head.PrevNode = null;
+                count--;
+             //  return;
+            }
+            if (tail.Value.Equals(element)) // If element is tail
+            {
+                tail = tail.PrevNode;
+                tail.NextNode = null;
+                count--;
+              //  return;
+            }
+          //  int index = 0;
+            Node currentNode = head;
+            while (currentNode != null)
+            {
+                if (currentNode.Value.Equals(element))
+                {
+                    currentNode.PrevNode.NextNode = currentNode.NextNode;
+                    currentNode.NextNode.PrevNode = currentNode.PrevNode;
+                    currentNode = currentNode.NextNode;
+                    count--;
+                }
+                currentNode = currentNode.NextNode;
+                //index++;
+            }
+            
+        }
+        public bool Contains(T element)
+        {
+            bool contains = false;
+            Node currentNode = head;
+            while (currentNode != null)
+            {
+                if (currentNode.Value.Equals(element))
+                {
+                    contains = true;
+                    return contains;
+                }
+                currentNode = currentNode.NextNode;
+            }
+            return contains;
+        }
+        public void InsertAt(T element, int index)
+        {
+            Node newNode = new Node(element);
+            Node currentNode = head;
+            int currentIndex = 0;
+            if (index >= count || index < 0)
+            {
+                throw new IndexOutOfRangeException("Index out of range!");
+            }
+            if (index == 0)
+            {
+                Node swap = head;
+                swap.PrevNode = newNode;
+                newNode.PrevNode = null;
+                newNode.NextNode = swap;
+                head = newNode;
+                count++;
+                return;
+            }
+            if (index == count - 1)
+            {
+                newNode.NextNode = tail;
+                newNode.PrevNode = tail.PrevNode;
+                tail.PrevNode.NextNode = newNode;
+                tail.PrevNode = newNode;
+                count++;
+                return;
+            }
+            while (currentIndex != index || currentIndex == index)
+            {
+                if (currentIndex == index)
+                {
+                    newNode.NextNode = currentNode;
+                    newNode.PrevNode = currentNode.PrevNode;
+                    currentNode.PrevNode.NextNode = newNode;
+                    currentNode.PrevNode = newNode;
+                    count++;
+                    break;
+                }
+                currentNode = currentNode.NextNode;
+                currentIndex++;
+            }
+        }
+        public T this[int index]
+        {
 
+            get
+            {
+                int currentIndex = 0;
+                Node currentNode = head;
+                while (currentNode != null)
+                {
+                    if (index == currentIndex)
+                    {
+                        break;
+                    }
+                    currentNode = currentNode.NextNode;
+                    currentIndex++;
+                }
+                return currentNode.Value;
+            }
+            set
+            {
+                int currentIndex = 0;
+                Node currentNode = head;
+                while (currentNode != null)
+                {
+                    if (index == currentIndex)
+                    {
+                        break;
+                    }
+                    currentNode = currentNode.NextNode;
+                    currentIndex++;
+                }
+                currentNode.Value = value;
+            }
+        }
+        public static T[] ToArray(DoubleLinedList<T> list)
+        {
+            T[] array = new T[list.count];
+            if (list.count == 0)
+            {
+                return array;
+            }
+            int index = 0;
+            Node currentNode = list.head;
+            while (currentNode != null)
+            {
+                array[index] = currentNode.Value;
+                currentNode = currentNode.NextNode;
+                index++;
+            }
+            return array;
+        }
     }
 }

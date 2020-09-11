@@ -7,15 +7,19 @@ namespace Chapter16Excersices
     {
         static void Main(string[] args)
         {
-            DoubleLinedList<int> numbers = new DoubleLinedList<int>();
-            numbers.Add(14);
-            numbers.Add(51);
-            numbers.Add(15);
-            numbers.Add(156);
-            Console.WriteLine(numbers);
+            DynamicStack<int> numbers = new DynamicStack<int>();
+            numbers.Push(12);
+            numbers.Push(14);
+            numbers.Push(59);
+            int[] array = numbers.ToArray();
+            foreach (int number in array)
+            {
+                Console.WriteLine(number);
+            }
+
 
             //Excersice10();
-            
+
             //Excersice9();
 
             //Excersice7();
