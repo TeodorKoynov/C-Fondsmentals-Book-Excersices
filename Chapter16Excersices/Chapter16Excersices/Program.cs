@@ -7,15 +7,18 @@ namespace Chapter16Excersices
     {
         static void Main(string[] args)
         {
-            DynamicStack<int> numbers = new DynamicStack<int>();
-            numbers.Push(12);
-            numbers.Push(14);
-            numbers.Push(59);
-            int[] array = numbers.ToArray();
-            foreach (int number in array)
-            {
-                Console.WriteLine(number);
-            }
+
+            QueueWithArray<int> numbers = new QueueWithArray<int>();
+            numbers.Enqueue(154);
+            numbers.Enqueue(42);
+            numbers.Enqueue(4);
+            numbers.Enqueue(12);
+            numbers.Dequeue();
+            numbers.Enqueue(123);
+            numbers.Clear();
+       
+
+            Console.WriteLine(numbers.Peek());
 
 
             //Excersice10();
