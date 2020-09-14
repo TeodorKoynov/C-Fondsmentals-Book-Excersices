@@ -8,38 +8,25 @@ namespace Chapter16Excersices
         static void Main(string[] args)
         {
 
-            QueueWithArray<int> numbers = new QueueWithArray<int>();
-            numbers.Enqueue(154);
-            numbers.Enqueue(42);
-            numbers.Enqueue(4);
-            numbers.Enqueue(12);
-            numbers.Dequeue();
-            numbers.Enqueue(123);
-            numbers.Clear();
-       
+            DoubleLinedList<int> list = new DoubleLinedList<int>();
+            list.Add(13);
+            list.Add(51);
+            list.Add(1);
+            list.Add(21);
+            list.Add(4);
 
-            Console.WriteLine(numbers.Peek());
+            list.Sort();
+            for (int i = 0; i < list.Count; i++)
+            {
+                Console.WriteLine(list[i] + " ");
+            }            
 
 
-            //Excersice10();
 
-            //Excersice9();
-
-            //Excersice7();
-
-            //Excersice6();
-
-            //Excersice5();
-
-            //Excersice4();
-
-            //Excersice3();
-
-            //Excersice2();
-
-            //Excersice1();
         }
 
+
+     
         private static void Excersice10()
         {
             int n = 3;
@@ -84,8 +71,7 @@ namespace Chapter16Excersices
                 }
             }
         }
-
-
+     
         private static void Excersice9()
         {
             Queue<int> numbers = new Queue<int>();

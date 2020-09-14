@@ -5,6 +5,7 @@ using System.Text;
 namespace Chapter16Excersices
 {
     public class DoubleLinedList<T>
+        where T : IComparable<T>
     {
         // Fields
         private int count = 0;
@@ -230,6 +231,34 @@ namespace Chapter16Excersices
                 index++;
             }
             return array;
+        }
+
+        public void Sort()
+        {   
+           for (int i = 0; i < count - 1; i++)
+           {
+                for (int j = i + 1; j < count; j++)
+                {
+                    if (Compare(this[i], this[j]))
+                    {
+                        T swap = this[i];
+                        this[i] = this[j];
+                        this[j] = swap;
+                    }
+
+                }
+           }
+        }
+        
+        /// <summary>
+        /// Returns true if first is greater
+        /// </summary>
+        /// <param name="first"></param>
+        /// <param name="second"></param>
+        /// <returns></returns>
+        private static bool Compare(T first, T second)
+        {
+            return first.CompareTo(second) > 0;
         }
     }
 }
